@@ -1,64 +1,61 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        shop-sheep
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+  <div>
+    <section class="heading__content">
+      <main-nav class="heading__content-main-nav"></main-nav>
+      <m-side-nav class="heading__content-side-nav"></m-side-nav>
+      <div class="heading__content-carousel-wrapper">
+        <m-carousel class="heading__content-carousel"></m-carousel>
       </div>
-    </div>
-  </section>
+    </section>
+    <section class="featured__content">
+      <m-featured title="Casual Spring" position="right" background="#fea6b2"></m-featured>
+    </section>
+    <section class="featured__content">
+      <m-featured title="Maxx Mad" position="left" background="#ecd9d1"></m-featured>
+    </section>
+    <section class="featured__content">
+      <m-featured title="Maxx Mad" position="left" background="#1e1e1e"></m-featured>
+    </section>
+  </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+  import MainNav from '~/components/Nav.vue'
+  import MCarousel from '~/components/Carousel.vue'
+  import MFeatured from '~/components/Featured.vue'
+  import MSideNav from '~/components/SideNav.vue'
 
-export default {
-  components: {
-    AppLogo
+  export default {
+    components: {
+      MainNav,
+      MCarousel,
+      MSideNav,
+      MFeatured
+    }
   }
-}
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="scss">
+  @import '~@/assets/css/abstracts/abstract';
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  html {
+    font-size: 62.5%;
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  .heading__content {
+    display: flex;
+    height: 60rem;
+    &-side-nav {
+      flex: 0.8;
+      background: $color--grey-1;
+    }
+    &-carousel-wrapper {
+      flex: 2;
+      background: $color--blue-1;
+    }
+  }
 
-.links {
-  padding-top: 15px;
-}
+  .featured__content {
+    height: 90vh;
+  }
 </style>
