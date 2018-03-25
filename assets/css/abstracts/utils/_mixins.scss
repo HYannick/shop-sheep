@@ -1,0 +1,88 @@
+@mixin fontFace($fontName, $fontFileName, $fontWeight: 400, $fontStyle: normal) {
+  $fontsPath: '/modules/my-apostrophe-assets/fonts/';
+  @font-face {
+    font-family: $fontName;
+    src: url('#{$fontsPath}#{$fontFileName}.eot');
+    src:
+      url('#{$fontsPath}#{$fontFileName}.eot?#iefix') format('embedded-opentype'),
+      url('#{$fontsPath}#{$fontFileName}.woff2') format('woff2'),
+      url('#{$fontsPath}#{$fontFileName}.woff') format('woff'),
+      url('#{$fontsPath}#{$fontFileName}.ttf') format('truetype'),
+      url('#{$fontsPath}#{$fontFileName}.svg##{$fontFileName}') format('svg');
+    font-weight: $fontWeight;
+    font-style: $fontStyle;
+  }
+}
+@mixin breakpoint($width, $direction: up) {
+  $nextBreakpoint: 9999px;
+  @if $direction == down {
+    @media (max-width: $width - 1) {
+      @content;
+    }
+  }
+  @else if $direction == only {
+    @if $width == $xxs {
+      $width: 0;
+      $nextBreakpoint: $xs;
+    }
+    @else if $width == $xs {
+      $nextBreakpoint: $sm;
+    }
+    @else if $width == $sm {
+      $nextBreakpoint: $md;
+    }
+    @else if $width == $md {
+      $nextBreakpoint: $lg;
+    }
+    @else if $width == $lg {
+      $nextBreakpoint: $xl;
+    }
+    @else if $width == $xl {
+      @warn "you don't need to set <only> for the biggest resolution";
+    }
+    @media screen and (min-width: $width) and (max-width: $nextBreakpoint - 1) {
+      @content;
+    }
+  }
+  @else { // if $direction is empty or equal to up or anything else
+    @media screen and (min-width: $width) {
+      @content;
+    }
+  }
+}
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+%underline-animation-abstract {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transform: scale3d(0, 1, 1);
+    transform-origin: 100% 50%;
+    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  }
+}
+
+%underline-animation-hover {
+  transform: scale3d(1, 1, 1);
+  transform-origin: 0 50%;
+  transition-timing-function: ease;
+}
+
+@mixin underline-animation ($bottom: 0, $height: 1px, $background: currentColor) {
+  @extend %underline-animation-abstract;
+
+  &:before {
+    bottom: $bottom;
+    height: $height;
+    background: $background;
+  }
+}

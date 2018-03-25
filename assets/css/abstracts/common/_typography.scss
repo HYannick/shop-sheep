@@ -1,0 +1,43 @@
+// Global typography
+@font-face {
+  font-family: "Anurati";
+  src: url("/fonts/Anurati-Regular.otf");
+}
+
+@font-face {
+  font-family: "Baron Neue";
+  src: url("/fonts/Baron Neue.otf");
+}
+
+@font-face {
+  font-family: "Elianto";
+  src: url("/fonts/Elianto-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Koliko";
+  src: url("/fonts/koliko-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Mashup";
+  src: url("/fonts/Mash-up.ttf");
+}
+
+@font-face {
+  font-family: "Tahu";
+  src: url("/fonts/Tahu.ttf");
+}
+
+@font-face {
+  font-family: "Vindica";
+  src: url("/fonts/Vindica.ttf");
+}
+
+$font-family--1: 'Anurati', sans-serif;
+$font-family--2: 'Baron Neue', sans-serif;
+$font-family--3: 'Elianto', sans-serif;
+$font-family--4: 'Koliko', sans-serif;
+$font-family--5: 'Mashup', sans-serif;
+$font-family--6: 'Tahu', sans-serif;
+$font-family--7: 'Vindica', sans-serif;
