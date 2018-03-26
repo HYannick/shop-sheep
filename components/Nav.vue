@@ -157,7 +157,7 @@
       }
     }
     &-logo {
-      flex: 0.8;
+      flex: 0.5;
       a {
         padding-left: 2rem;
         color: $color--blue-2;
